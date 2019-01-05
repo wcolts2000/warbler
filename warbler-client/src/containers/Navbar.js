@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link, NavLink} from "react-router-dom";
 import {connect} from "react-redux";
+import logo from "../images/warbler-logo.png";
 
 class Navbar extends Component {
   render() {
@@ -8,17 +9,17 @@ class Navbar extends Component {
       <nav className="navbar navbar-expand">
         <div className="container-fluid">
             <Link to="/" className="navbar-brand">
-                <img src="" alt="Warbler Home" />
+                <img src={logo} alt="Warbler Home" />
             </Link>
-        </div>
         <ul className="nav navbar-nav navbar-right">
             <li>
-                <NavLink to="/signup">Sign Up</NavLink>
+                <NavLink to="/signup" style={{marginRight: 15}}>Sign Up</NavLink>
             </li>
             <li>
                 <NavLink to="/signin">Login</NavLink>
             </li>
         </ul>
+        </div>
       </nav>
     )
   }
