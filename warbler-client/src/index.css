@@ -1,6 +1,5 @@
 body {
   background-color: #e6ecf0;
-
 }
 
 .navbar {
@@ -14,7 +13,7 @@ body {
 
 .navbar a:hover {
   color: white;
-  opacity: .8;
+  opacity: 0.8;
   text-decoration: none;
   cursor: pointer;
 }
@@ -32,7 +31,7 @@ ul.nav.navbat-nav li {
 }
 
 .onboarding > .navbar {
-  background-image: url('./images/nav-bg.png');
+  background-image: url("./images/nav-bg.png");
   background-size: 100% 100%;
 }
 
@@ -48,10 +47,20 @@ ul.nav.navbat-nav li {
   text-shadow: 0 0 8px #66757f;
   align-items: center;
   justify-content: center;
-  background-image: url('./images/signed-out-home.jpg');
+  background-image: url("./images/signed-out-home.jpg");
   z-index: -1;
   text-align: center;
   padding: 1rem;
   background-position: center center;
   background-size: cover;
+}
+
+#messages .list-group-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 7px 20px 12px;
+}
+
+#messages:not(.no-hover) .list-group-item:hover {
+  background-color: #e6ecf0;
 }
