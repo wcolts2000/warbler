@@ -4,7 +4,7 @@ export default class AuthForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      emails: "",
+      email: "",
       username: "",
       password: "",
       profileImageUrl: ""
@@ -27,13 +27,26 @@ export default class AuthForm extends Component {
 
   render() {
     const { email, username, password, profileImageUrl } = this.state;
-    const { heading, buttonText, signUp } = this.props;
+    const {
+      heading,
+      buttonText,
+      signUp,
+      errors,
+      history,
+      removeError
+    } = this.props;
+    history.listen(() => {
+      removeError();
+    });
     return (
       <div>
         <div className="row justify-content-md-center text-center">
           <div className="col-md-6">
             <form onSubmit={this.handleSubmit}>
               <h2>{heading}</h2>
+              {errors.message && (
+                <div className="alert alert-danger">{errors.message}</div>
+              )}
               <label htmlFor="email">Email:</label>
               <input
                 className="form-control"
@@ -48,6 +61,7 @@ export default class AuthForm extends Component {
                 className="form-control"
                 id="password"
                 type="password"
+                value={password}
                 name="password"
                 onChange={this.handleChange}
               />
@@ -73,6 +87,7 @@ export default class AuthForm extends Component {
                   />
                 </>
               )}
+              <div className="row mb-4" />
               <button
                 type="submit"
                 className="btn btn-primary btn-block btn-lg"

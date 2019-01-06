@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 import Homepage from "../components/Homepage";
 import AuthForm from "../components/AuthForm";
 import { authUser } from "../store/actions/auth";
+import { removeError } from "../store/actions/errors";
 
 const Main = props => {
-  const { authUser } = props;
+  const { authUser, errors } = props;
   return (
     <div className="container">
       <Switch>
@@ -17,9 +18,11 @@ const Main = props => {
           render={props => (
             <AuthForm
               {...props}
+              errors={errors}
               onAuth={authUser}
               buttonText="Login"
               heading="Welcome Back"
+              removeError={removeError}
             />
           )}
         />
@@ -29,6 +32,8 @@ const Main = props => {
           render={props => (
             <AuthForm
               {...props}
+              removeError={removeError}
+              errors={errors}
               onAuth={authUser}
               buttonText="Sign Me Up"
               signUp
@@ -40,15 +45,16 @@ const Main = props => {
     </div>
   );
 };
-const mapStateToProps = ({ currentUser }) => {
+const mapStateToProps = ({ currentUser, errors }) => {
   return {
-    currentUser
+    currentUser,
+    errors
   };
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { authUser }
+    { authUser, removeError }
   )(Main)
 );
