@@ -16,7 +16,7 @@
     "dotenv": "^5.0.1",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^8.8.3"
+    "mongoose": "^8.9.5"
   },
   "devDependencies": {
     "locus": "^2.0.1"
